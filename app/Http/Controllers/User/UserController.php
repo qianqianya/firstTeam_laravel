@@ -45,17 +45,19 @@ class UserController extends Controller
         }
     }
 
-    //用户中心验证
-    public function token()
-    {
-        $uid=$_POST['u_id'];
-        $oldtoken=$_POST['token'];
-        $newtoken=Redis::get("token:one:$uid");
-        if($oldtoken==$newtoken){
-            return 1;
-        }else{
-            return 0;
-        }
+    public function quit(){
+        setcookie('u_id',null);
+        setcookie('token',null);
+        request()->session()->pull('u_token',null);
+        echo '退出成功';
+    }
+
+
+    //个人中心
+    public function mycenter(Request $request){
+        $uid = $request->input('u_id');
+        $obj = UserModel::where(['u_id'=>$uid])->first();
+        return json_encode($obj);
     }
 
 }
