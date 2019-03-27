@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Goods;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 
 class GoodsController extends Controller
