@@ -48,17 +48,4 @@ class UserController extends Controller
         }
     }
 
-    //用户中心验证
-    public function token()
-    {
-        $uid=$_POST['u_id'];
-        $oldtoken=$_POST['token'];
-        $newtoken=Redis::get("token:one:$uid");
-        if($oldtoken==$newtoken){
-            return 1;
-        }else{
-            return 0;
-        }
-    }
-
 }
