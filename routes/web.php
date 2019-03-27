@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//登陆
+Route::any('/api/login', 'User\UserController@login');
+
+//个人中心
+Route::any('/api/token', 'User\UserController@token');
