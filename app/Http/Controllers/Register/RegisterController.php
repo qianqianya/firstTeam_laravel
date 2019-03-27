@@ -15,9 +15,9 @@ class RegisterController extends Controller
         $rpwd=$request->input('rpwd');
         if($rpwd==$pwd){
             $data=[
-                'name'=>$name,
-                'email'=>$email,
-                'pwd'=>$pwd
+                'u_name'=>$name,
+                'u_email'=>$email,
+                'u_pwd'=>$pwd
 
             ];
             UsersModel::insert($data);
