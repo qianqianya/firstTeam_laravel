@@ -20,9 +20,10 @@ Route::any('/api/login', 'User\UserController@login');
 
 //个人中心
 Route::any('/api/token', 'User\UserController@token');
+
+
 //注册
 Route::post('/reg','Register\RegisterController@doReg');
 
 //个人中心
 Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
-
