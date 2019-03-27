@@ -20,3 +20,22 @@ Route::any('/api/login', 'User\UserController@login');
 
 //个人中心
 Route::any('/api/token', 'User\UserController@token');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################
+//个人中心
+Route::any('/api/goodsList', 'User\UserController@goodsList');
