@@ -34,3 +34,8 @@ Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
 
 
 Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
+
+
+
+//退出
+Route::any('/quit','User\UserController@quit');
