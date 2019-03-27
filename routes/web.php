@@ -38,4 +38,4 @@ Route::any('/api/token', 'User\UserController@token');
 
 #####################################
 //个人中心
-Route::any('/api/goodsList', 'User\UserController@goodsList');
+Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
