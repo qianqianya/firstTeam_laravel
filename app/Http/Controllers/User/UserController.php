@@ -61,4 +61,12 @@ class UserController extends Controller
         }
     }
 
+
+    //个人中心
+    public function mycenter(Request $request){
+        $uid = $request->input('u_id');
+        $obj = UserModel::where(['u_id'=>$uid])->first();
+        return json_encode($obj);
+    }
+
 }
