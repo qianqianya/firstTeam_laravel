@@ -28,23 +28,20 @@ class UserController extends Controller
                 request()->session()->put('u_id',$u_pwd['u_id']);
                 $data=[
                     'token'=>$token,
-                    'u_id'=>$u_pwd['u_id']
+                    'u_id'=>$u_pwd['u_id'],
+                    'msg'=>'登录成功'
                 ];
-                $res=json_encode($data,true);
-                if($res) {
-                    echo '登录成功';
-                }
             }else{
                 $data=[
-                    'error'=>'密码错误'
+                    'msg'=>'账号或密码有误'
                 ];
-                echo json_encode($data);
             }
+            return json_encode($data);
         }else{
             $data=[
                 'error'=>'该用户不存在'
             ];
-            echo json_encode($data);
+            return json_encode($data);
         }
     }
 
