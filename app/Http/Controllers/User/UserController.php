@@ -28,6 +28,12 @@ class UserController extends Controller
 
                 request()->session()->put('u_token',$token);
                 request()->session()->put('u_id',$user['u_id']);
+
+
+                //token存redis
+                $key='str:web:token'.$user->u_id;
+                Redis::set($key,$token);
+                Redis::expire($key,86400);
                 $data=[
                     'token'=>$token,
                     'u_id'=>$user['u_id'],
@@ -47,11 +53,22 @@ class UserController extends Controller
         }
     }
 
-    public function quit(){
-        setcookie('u_id',null);
-        setcookie('token',null);
-        request()->session()->pull('u_token',null);
-        echo '退出成功';
+    public function quit(Request $request){
+        $uid=$request->input('u_id');
+        $key='str:web:token'.$uid;
+        $is=Redis::del($key);
+        if($is==1){
+            $response=[
+                'errno'=>200,
+                'msg'  =>'退出成功'
+            ];
+        }else{
+            $response=[
+                'errno'=>400,
+                'msg'  =>'非法操作'
+            ];
+        }
+        return json_encode($response);
     }
 
 
