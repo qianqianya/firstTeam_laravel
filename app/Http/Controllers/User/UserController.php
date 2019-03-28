@@ -18,23 +18,15 @@ class UserController extends Controller
         $where=[
             'u_email'=>$email
         ];
-<<<<<<< HEAD
+
         $u_pwd=UsersModel::where($where)->first();
-=======
-        $u_pwd=UserModel::where($where)->first();
         $user=json_decode($u_pwd,true);
         //var_dump($user);die;
->>>>>>> master
         if($u_pwd){
             if($user['u_pwd']==$pwd){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
-<<<<<<< HEAD
                 setcookie('u_id',$u_pwd['u_id'],time()+86400,'/','',false,true);
                 setcookie('token',$token,time()+86400,'/','',false,true);
-=======
-                setcookie('u_id',$user['u_id'],time()+86400,'/','',false,true);
-                setcookie('token',$token,time()+86400,'/center','',false,true);
->>>>>>> master
 
                 request()->session()->put('u_token',$token);
                 request()->session()->put('u_id',$user['u_id']);

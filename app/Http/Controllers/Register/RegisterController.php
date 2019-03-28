@@ -33,7 +33,4 @@ class RegisterController extends Controller
         }
         return json_encode($response);
     }
-    //退出
-    public function quit(){
-
 }
