@@ -44,6 +44,7 @@ class UserController extends Controller
                 ];
             }else{
                 $data=[
+                    'status'=>1,
                     'msg'=>'账号或密码有误'
                 ];
             }
