@@ -35,6 +35,7 @@ class UserController extends Controller
                 Redis::set($key,$token);
                 Redis::expire($key,86400);
                 $data=[
+                    'status'=>1000,
                     'token'=>$token,
                     'u_id'=>$user['u_id'],
                     'msg'=>'登录成功'
