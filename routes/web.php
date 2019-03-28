@@ -53,6 +53,7 @@ Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
 
 //退出
 Route::any('/quit','User\UserController@quit');
+<<<<<<< HEAD
 =======
 <?php
 
@@ -88,4 +89,11 @@ Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
 # 添加订单
 Route::any('/api/oradd', 'Order\OrderController@orAdd');
 >>>>>>> zmw
+>>>>>>> master
+=======
+
+
+# 添加订单
+Route::any('/api/oradd', 'Order\OrderController@orAdd');
+
 >>>>>>> master
