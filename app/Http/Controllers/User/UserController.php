@@ -42,13 +42,15 @@ class UserController extends Controller
                     'u_id'=>$user['u_id'],
                     'msg'=>'登录成功'
                 ];
+                return json_encode($data);
             }else{
                 $data=[
                     'status'=>1,
                     'msg'=>'账号或密码有误'
                 ];
+                return json_encode($data);
             }
-            return json_encode($data);
+
         }else{
             $data=[
                 'error'=>'该用户不存在'
