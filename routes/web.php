@@ -68,3 +68,9 @@ Route::any('/api/likecheck','Like\LikeController@likecheck');
 //收藏
 Route::any('/collect','Register\CollectController@collect');
 
+
+Route::any('/oradd','Order\OrderController@orAdd');
+
+
+Route::any('/ormsg','Order\OrderController@orMsg');
+
