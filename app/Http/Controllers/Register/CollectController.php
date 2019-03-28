@@ -16,7 +16,7 @@ class CollectController extends Controller
         $time=time();
         $collect='collect_goods_id'.$goods_id;
         $collect_u='collect_u_id'.$uid;
-        $responce=$this->checkLogin($uid,$token);
+        $responce=$this->checkLogin($token,$uid);
         if($responce=='true'){
             if($status==1){
                 Redis::zlncrBy($collect,1,$goods_id);
