@@ -9,17 +9,53 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    # 添加订单
     public  function orAdd(Request $request){
-        #cort id
+           # 添加订单
+        $money  = $request->input('money');
+        $num  = $request->input('num');
+        $orDate = [
+            'o_name'=>$this->orNumAdd()
+            ,'o_amount'=>$money
+            ,'o_integral'=>null
+            ,'uid'=>$_COOKIE['u_id']
+            ,'o_ctime'=>time()
+            ,'is_delete'=>null
+            ,'is_pay'=>null
+            ,'pay_amount'=>$num
+            ,'pay_ctime'=>null
+            ,'status'=>1
+        ];
+
+        $res = DB::table('laravel_order')->insert($orDate);
+        if($res){
+            $reset = [
+                'code'=>200
+                ,'msg'=>'下单成功'
+            ];
+        }else{
+            $reset = [
+                'code'=>500
+                ,'msg'=>'下单失败'
+            ];
+        }
+
+        return json_encode($reset);
+    }
 
 
-        $data = DB::table('laravel_cart')
-            ->join('laravel_goods', function($join)
-            {
-                $join->on('laravel_cart.goods_id', '=', 'laravel_goods.goods_id');
-            })
-            ->get()->toArray();
 
-        print_r($data);
+    # 获取订单页面信息
+    public function  orMsg(){
+        $u_id = $_COOKIE['u_id'];
+
+        $u_dada = DB::table('laravel_user')->where(['u_id'=>$u_id])->first();
+        return  $u_dada->u_name;
+    }
+
+
+    # 生成订单号
+    public function orNumAdd(){
+        return  date('YmdHis').rand(10000,99999);
     }
 }

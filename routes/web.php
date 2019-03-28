@@ -44,6 +44,12 @@ Route::any('/cartList', 'Cart\CartController@cartList');
 Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
 
 
-
 //退出
 Route::any('/quit','User\UserController@quit');
+
+
+# 提交订单
+Route::any('oradd', 'Order\OrderController@orAdd');
+# 订单信息
+Route::any('ormsg', 'Order\OrderController@orMsg');
+
