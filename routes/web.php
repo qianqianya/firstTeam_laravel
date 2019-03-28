@@ -51,3 +51,7 @@ Route::any('/quit','User\UserController@quit');
 
 //点赞
 Route::any('/api/like','Like\LikeController@like');
+
+
+//展示点赞
+Route::any('/api/likecheck','Like\LikeController@likecheck');

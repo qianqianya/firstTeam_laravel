@@ -62,4 +62,23 @@ class LikeController extends Controller
 
 
     }
+
+    public function likecheck(Request $request){
+        $u_id = $request->input('u_id');
+
+        $goods_id = $request->input('goods_id');
+
+        $res = DB::table('laravel_like')->where(['u_id'=>$u_id,'goods_id'=>$goods_id])->first();
+
+        if($res){
+
+           $obj = DB::table('laravel_like')->join('laravel_like_num','laravel_like.goods_id','=','laravel_like_num.goods_id')->where(['u_id'=>$u_id])->first();
+            return json_encode($obj);
+        }else{
+
+           $num = DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->first();
+           return json_encode($num);
+        }
+
+    }
 }
