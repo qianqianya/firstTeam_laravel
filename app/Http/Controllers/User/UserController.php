@@ -44,6 +44,7 @@ class UserController extends Controller
                     'msg'=>'登录成功'
                 ];
                 return json_encode($data);
+
             }else{
                 $data=[
                     'status'=>1,
@@ -82,10 +83,8 @@ class UserController extends Controller
     //个人中心
     public function mycenter(Request $request){
         $uid = $request->input('u_id');
-        $obj = UserModel::where(['u_id'=>$uid])->first();
-        return json_encode($obj,JSON_UNESCAPED_UNICODE);
         $obj = UsersModel::where(['u_id'=>$uid])->first();
-        return json_encode($obj);
+        return json_encode($obj,JSON_UNESCAPED_UNICODE);
     }
 
 }
