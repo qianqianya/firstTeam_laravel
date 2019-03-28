@@ -53,5 +53,19 @@ Route::any('/quit','User\UserController@quit');
 Route::any('/api/like','Like\LikeController@like');
 
 
+<<<<<<< HEAD
 //展示点赞
 Route::any('/api/likecheck','Like\LikeController@likecheck');
+=======
+
+
+
+
+
+
+
+
+
+//收藏
+Route::any('/collect','Register\CollectController@collect');
+>>>>>>> master
