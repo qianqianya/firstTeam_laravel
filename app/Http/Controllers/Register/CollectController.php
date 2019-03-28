@@ -32,6 +32,12 @@ class CollectController extends Controller
                 ];
             }
             return json_encode($response);
+        }else{
+            $response=[
+                'errno'=>100,
+                'msg'  =>$responce
+            ];
+            return json_encode($responce);
         }
     }
 
