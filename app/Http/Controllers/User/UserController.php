@@ -60,7 +60,7 @@ class UserController extends Controller
     public function mycenter(Request $request){
         $uid = $request->input('u_id');
         $obj = UserModel::where(['u_id'=>$uid])->first();
-        return json_encode($obj);
+        return json_encode($obj,JSON_UNESCAPED_UNICODE);
     }
 
 }
