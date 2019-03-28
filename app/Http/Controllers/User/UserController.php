@@ -80,6 +80,7 @@ class UserController extends Controller
     }
 
 
+
     //个人中心
     public function mycenter(Request $request){
         $uid = $request->input('u_id');
