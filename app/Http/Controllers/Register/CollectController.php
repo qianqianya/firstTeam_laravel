@@ -10,7 +10,7 @@ class CollectController extends Controller
     //收藏
     public function collect(Request $request){
         $goods_id=$request->input('goods_id');
-        $uid=$request->input('uid');
+        $uid=$request->input('u_id');
         $token=$request->input('token');
         $status=$request->input('status');
         $time=time();
