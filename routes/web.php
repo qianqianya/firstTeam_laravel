@@ -27,3 +27,7 @@ Route::any('/reg','Register\RegisterController@doReg');
 
 //个人中心
 Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
+
+
+# 添加订单
+Route::any('/api/oradd', 'Order\OrderController@orAdd');
