@@ -75,14 +75,14 @@ class LikeController extends Controller
            $obj = DB::table('laravel_like')->join('laravel_like_num','laravel_like.goods_id','=','laravel_like_num.goods_id')->where(['u_id'=>$u_id])->first();
            $arr = json_decode($obj,true) ;
            $arr['like_status']= 1;
-           return json_encode($obj);
+           return json_encode($arr);
         }else{
 
            $num = DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->first();
             $arr = json_decode($num,true) ;
             $arr['like_status']= 2;
            if($num){
-               return json_encode($num);
+               return json_encode($arr);
            }else{
 
                return json_encode(['like_name'=>0,'like_status'=>3]);
