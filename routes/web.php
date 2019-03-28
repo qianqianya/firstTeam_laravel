@@ -22,15 +22,17 @@ Route::any('/api/login', 'User\UserController@login');
 //个人中心
 Route::any('/api/token', 'User\UserController@token');
 
-
 //注册
 Route::any('/reg','Register\RegisterController@doReg');
-
 
 #####################################
 //个人中心
 Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
 
-
-
 Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
+
+//购物车添加
+Route::post('/cartAdd', 'Cart\CartController@cartAdd');
+
+//购物车展示
+Route::any('/cartList', 'Cart\CartController@cartList');

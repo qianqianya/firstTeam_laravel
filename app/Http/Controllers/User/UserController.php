@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Model\UserModel;
+
+use App\Model\UsersModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
@@ -17,12 +18,12 @@ class UserController extends Controller
         $where=[
             'u_email'=>$email
         ];
-        $u_pwd=UserModel::where($where)->first();
+        $u_pwd=UsersModel::where($where)->first();
         if($u_pwd){
             if($u_pwd['u_pwd']==$pwd){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
                 setcookie('u_id',$u_pwd['u_id'],time()+86400,'/','',false,true);
-                setcookie('token',$token,time()+86400,'/center','',false,true);
+                setcookie('token',$token,time()+86400,'/','',false,true);
 
                 request()->session()->put('u_token',$token);
                 request()->session()->put('u_id',$u_pwd['u_id']);
