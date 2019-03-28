@@ -31,7 +31,7 @@ class UserController extends Controller
 
 
                 //token存redis
-                $key='str:web:token'.$user->u_id;
+                $key='str:web:token'.$user['u_id'];
                 Redis::set($key,$token);
                 Redis::expire($key,86400);
                 $data=[
