@@ -44,7 +44,7 @@ class UserController extends Controller
                     'msg'=>'登录成功'
                 ];
                 return json_encode($data);
-                
+
             }else{
                 $data=[
                     'status'=>1,
