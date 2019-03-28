@@ -47,3 +47,8 @@ Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
 
 //退出
 Route::any('/quit','User\UserController@quit');
+
+
+
+//收藏
+Route::any('/collect','Register\CollectController@collect');

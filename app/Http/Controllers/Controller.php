@@ -9,5 +9,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function checkLogin($token,$uid){
+        if(empty($uid)){
+            return '您还没登录，请先登录';
+        }
+        if(empty($token)){
+            return '您还没登录，请先登录';
+        }
+
+    }
 }
