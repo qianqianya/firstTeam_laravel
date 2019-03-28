@@ -29,13 +29,18 @@ Route::any('/api/mycenter', 'User\UserController@mycenter');
 //注册
 Route::any('/reg','Register\RegisterController@doReg');
 
-
 #####################################
 //商品
 Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
 
+Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
 
-//商品详情
+
+Route::post('/cartAdd', 'Cart\CartController@cartAdd');
+
+//购物车展示
+Route::any('/cartList', 'Cart\CartController@cartList');
+
 Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
 
 
