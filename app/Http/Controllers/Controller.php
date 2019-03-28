@@ -10,7 +10,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     public function checkLogin($token,$uid){
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         if(empty($uid)){
             return '您还没登录，请先登录';
         }

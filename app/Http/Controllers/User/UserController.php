@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Model\UserModel;
+
+use App\Model\UsersModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
@@ -17,48 +18,73 @@ class UserController extends Controller
         $where=[
             'u_email'=>$email
         ];
-        $u_pwd=UserModel::where($where)->first();
+
+        $u_pwd=UsersModel::where($where)->first();
+        $user=json_decode($u_pwd,true);
+        //var_dump($user);die;
+
         if($u_pwd){
-            if($u_pwd['u_pwd']==$pwd){
+            if($user['u_pwd']==$pwd){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
                 setcookie('u_id',$u_pwd['u_id'],time()+86400,'/','',false,true);
-                setcookie('token',$token,time()+86400,'/center','',false,true);
+                setcookie('token',$token,time()+86400,'/','',false,true);
 
                 request()->session()->put('u_token',$token);
-                request()->session()->put('u_id',$u_pwd['u_id']);
+                request()->session()->put('u_id',$user['u_id']);
+
+
+                //token存redis
+                $key='str:web:token'.$user['u_id'];
+                Redis::set($key,$token);
+                Redis::expire($key,86400);
                 $data=[
+                    'status'=>1000,
                     'token'=>$token,
-                    'u_id'=>$u_pwd['u_id']
+                    'u_id'=>$user['u_id'],
+                    'msg'=>'登录成功'
                 ];
-                $res=json_encode($data,true);
-                if($res) {
-                    echo '登录成功';
-                }
+                return json_encode($data);
+                
             }else{
                 $data=[
-                    'error'=>'密码错误'
+                    'status'=>1,
+                    'msg'=>'账号或密码有误'
                 ];
-                echo json_encode($data);
+                return json_encode($data);
             }
+
         }else{
             $data=[
                 'error'=>'该用户不存在'
             ];
-            echo json_encode($data);
+            return json_encode($data);
         }
     }
 
-    //用户中心验证
-    public function token()
-    {
-        $uid=$_POST['u_id'];
-        $oldtoken=$_POST['token'];
-        $newtoken=Redis::get("token:one:$uid");
-        if($oldtoken==$newtoken){
-            return 1;
+    public function quit(Request $request){
+        $uid=$request->input('u_id');
+        $key='str:web:token'.$uid;
+        $is=Redis::del($key);
+        if($is==1){
+            $response=[
+                'errno'=>200,
+                'msg'  =>'退出成功'
+            ];
         }else{
-            return 0;
+            $response=[
+                'errno'=>400,
+                'msg'  =>'非法操作'
+            ];
         }
+        return json_encode($response);
+    }
+
+
+    //个人中心
+    public function mycenter(Request $request){
+        $uid = $request->input('u_id');
+        $obj = UsersModel::where(['u_id'=>$uid])->first();
+        return json_encode($obj,JSON_UNESCAPED_UNICODE);
     }
 
 }

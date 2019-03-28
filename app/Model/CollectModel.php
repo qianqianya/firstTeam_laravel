@@ -4,8 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserModel extends Model
+class CollectModel extends Model
 {
-    public $table='laravel_user';
+    public $table='laravel_collect';
     public $timestamps=false;
 }

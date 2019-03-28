@@ -15,32 +15,52 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 //登陆
 Route::any('/api/login', 'User\UserController@login');
 
-//个人中心
+//个人中心token
 Route::any('/api/token', 'User\UserController@token');
-<<<<<<< HEAD
+
+
+//个人中心
+Route::any('/api/mycenter', 'User\UserController@mycenter');
+
 //注册
-Route::post('/reg','Register\RegisterController@doReg');
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::any('/reg','Register\RegisterController@doReg');
 
 #####################################
-//个人中心
+//商品
 Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
->>>>>>> master
+
+Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
+
+
+Route::post('/cartAdd', 'Cart\CartController@cartAdd');
+
+//购物车展示
+Route::any('/cartList', 'Cart\CartController@cartList');
+
+Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
+
+
+
+//退出
+Route::any('/quit','User\UserController@quit');
+
+
+//点赞
+Route::any('/api/like','Like\LikeController@like');
+
+
+
+
+
+
+
+
+
+
+
+//收藏
+Route::any('/collect','Register\CollectController@collect');
