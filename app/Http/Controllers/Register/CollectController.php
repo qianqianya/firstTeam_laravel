@@ -34,6 +34,10 @@ class CollectController extends Controller
             return json_encode($response);
         }
 
+<<<<<<< HEAD
+    }
+=======
         }
+>>>>>>> master
 
 }
