@@ -22,7 +22,7 @@ class UserController extends Controller
         $u_pwd=UsersModel::where($where)->first();
         $user=json_decode($u_pwd,true);
         //var_dump($user);die;
-        
+
         if($u_pwd){
             if($user['u_pwd']==$pwd){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
@@ -82,7 +82,7 @@ class UserController extends Controller
     //个人中心
     public function mycenter(Request $request){
         $uid = $request->input('u_id');
-        $obj = UserModel::where(['u_id'=>$uid])->first();
+        $obj = UsersModel::where(['u_id'=>$uid])->first();
         return json_encode($obj);
     }
 
