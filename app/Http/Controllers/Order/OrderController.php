@@ -12,7 +12,7 @@ class OrderController extends Controller
     public  function orAdd(Request $request){
         #cort id
 
-        
+
         $data = DB::table('laravel_cart')
             ->join('laravel_goods', function($join)
             {
