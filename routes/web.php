@@ -36,6 +36,12 @@ Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
 //商品详情
 Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
 
+//添加浏览用户
+Route::any('/api/goodsHstAdd', 'Goods\GoodsController@goodsHstAdd');
+
+//查询用户浏览
+Route::any('/api/goodsHstList', 'Goods\GoodsController@goodsHstList');
+
 //购物车添加
 Route::post('/cartAdd', 'Cart\CartController@cartAdd');
 
