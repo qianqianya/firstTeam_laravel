@@ -65,7 +65,7 @@ class OrderController extends Controller
         $uidK='str:web:u_id';
         $u_id = Redis::get($uidK);
         $u_dada = DB::table('laravel_user')->where(['u_id'=>$u_id])->get();
-        if($u_dada){
+        /*if($u_dada){
             $data = $u_dada->toArray();
             foreach($data as $k=>$v){
                 if($v['status']==1){
@@ -73,7 +73,7 @@ class OrderController extends Controller
                 }
                 $v['o_ctime']=date('Y-m-d H:i:s',$v['o_ctime']);
             }
-        }
-        return json_encode($data);
+        }*/
+        return json_encode($u_dada);
     }
 }
