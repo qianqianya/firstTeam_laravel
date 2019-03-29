@@ -62,8 +62,9 @@ class UserController extends Controller
 
     public function quit(Request $request){
         $uid=$request->input('u_id');
+        $u_id='str:web:u_id'.$uid;
         $key='str:web:token'.$uid;
-        $is=Redis::delete($key);
+        $is=Redis::del($key,$u_id);
         if($is==1){
             $response=[
                 'status'=>200,
