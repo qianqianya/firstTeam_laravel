@@ -32,13 +32,11 @@ class OrderController extends Controller
         $res = DB::table('laravel_order')->insert($orDate);
         if($res){
                 # 下单成功删除购物车
-                $cRes = DB::table('laravel_cort')->where(['uid'=>$u_id])->delect();
-            if($cRes){
+                $cRes = DB::table('laravel_cart')->where(['uid'=>$u_id])->delete();
                 $reset = [
                     'code'=>200
                     ,'msg'=>'下单成功'
                 ];
-            }
 
         }else{
             $reset = [
@@ -83,6 +81,7 @@ class OrderController extends Controller
                 $v->o_ctime=date('Y-m-d H:i:s',$v->o_ctime);
             }
         }
+        
         return json_encode($data);
     }
 }
