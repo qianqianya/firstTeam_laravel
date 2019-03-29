@@ -42,10 +42,6 @@ Route::post('/cartAdd', 'Cart\CartController@cartAdd');
 //购物车展示
 Route::any('/cartList', 'Cart\CartController@cartList');
 
-//商品详情
-Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
-
-
 
 //退出
 Route::any('/quit','User\UserController@quit');
@@ -59,28 +55,18 @@ Route::any('/api/like','Like\LikeController@like');
 Route::any('/api/likecheck','Like\LikeController@likecheck');
 
 
-
-//展示点赞
-Route::any('/api/likecheck','Like\LikeController@likecheck');
-
-
-
-
-
 //收藏
 Route::any('/collect','Register\CollectController@collect');
 
-
+//订单添加
 Route::any('/oradd','Order\OrderController@orAdd');
 
-
+//订单信息
 Route::any('/ormsg','Order\OrderController@orMsg');
 
 
 # 订单列表
 Route::any('/orlist','Order\OrderController@orList');
-
-
 
 # 浏览次数
 Route::post('/browse','Goods\GoodsController@browse');
