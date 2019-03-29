@@ -64,7 +64,7 @@ class UserController extends Controller
         $uid=$request->input('u_id');
         $u_id='str:web:u_id'.$uid;
         $key='str:web:token'.$uid;
-        $is=Redis::del($key,$u_id);
+        $is=Redis::del($key);
         if($is==1){
             $response=[
                 'status'=>200,
