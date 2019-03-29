@@ -28,8 +28,13 @@ class UserController extends Controller
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
                 //token存redis
                 $key='str:web:token'.$user['u_id'];
+                $uid='str:web:u_id'.$user['u_id'];
                 Redis::set($key,$token);
+                Redis::set($uid,$user['u_id']);
                 Redis::expire($key,86400);
+                Redis::expire($uid,86400);
+
+
                 $data=[
                     'status'=>1000,
                     'token'=>$token,
@@ -63,6 +68,7 @@ class UserController extends Controller
                 'status'=>200,
                 'msg'  =>'退出成功'
             ];
+            return json_encode($response);
         }else{
             $response=[
                 'status'=>400,
