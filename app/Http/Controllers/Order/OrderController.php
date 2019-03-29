@@ -50,12 +50,28 @@ class OrderController extends Controller
         $u_id = $_COOKIE['u_id'];
 
         $u_dada = DB::table('laravel_user')->where(['u_id'=>$u_id])->first();
-        return  $u_dada->u_name;
+        return  json_encode($u_dada->u_name);
     }
 
 
     # 生成订单号
     public function orNumAdd(){
         return  date('YmdHis').rand(10000,99999);
+    }
+
+    # 订单列表
+    public  function orList(){
+        $u_id = $_COOKIE['u_id'];
+        $u_dada = DB::table('laravel_user')->where(['u_id'=>$u_id])->get();
+        if($u_dada){
+            $data = $u_dada->toArray();
+            foreach($data as $k=>$v){
+                if($v['status']==1){
+                    $v['status']='未支付';
+                }
+                $v['o_ctime']=date('Y-m-d H:i:s',$v['o_ctime']);
+            }
+        }
+        return json_encode($data);
     }
 }
