@@ -33,12 +33,10 @@ class OrderController extends Controller
         if($res){
                 # 下单成功删除购物车
                 $cRes = DB::table('laravel_cart')->where(['uid'=>$u_id])->delete();
-            if($cRes){
                 $reset = [
                     'code'=>200
                     ,'msg'=>'下单成功'
                 ];
-            }
 
         }else{
             $reset = [
