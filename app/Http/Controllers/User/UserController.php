@@ -26,13 +26,6 @@ class UserController extends Controller
         if($u_pwd){
             if($user['u_pwd']==$pwd){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
-                setcookie('u_id',$u_pwd['u_id'],time()+86400,'/','',false,true);
-                setcookie('token',$token,time()+86400,'/','',false,true);
-
-                request()->session()->put('u_token',$token);
-                request()->session()->put('u_id',$user['u_id']);
-
-
                 //token存redis
                 $key='str:web:token'.$user['u_id'];
                 Redis::set($key,$token);
@@ -44,7 +37,7 @@ class UserController extends Controller
                     'msg'=>'登录成功'
                 ];
                 return json_encode($data);
-                
+
             }else{
                 $data=[
                     'status'=>1,
@@ -67,17 +60,18 @@ class UserController extends Controller
         $is=Redis::del($key);
         if($is==1){
             $response=[
-                'errno'=>200,
+                'status'=>200,
                 'msg'  =>'退出成功'
             ];
         }else{
             $response=[
-                'errno'=>400,
+                'status'=>400,
                 'msg'  =>'非法操作'
             ];
         }
         return json_encode($response);
     }
+
 
 
     //个人中心

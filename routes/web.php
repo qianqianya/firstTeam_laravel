@@ -53,10 +53,13 @@ Route::any('/quit','User\UserController@quit');
 Route::any('/api/like','Like\LikeController@like');
 
 
+//展示点赞
+Route::any('/api/likecheck','Like\LikeController@likecheck');
 
 
 
-
+//展示点赞
+Route::any('/api/likecheck','Like\LikeController@likecheck');
 
 
 
@@ -64,3 +67,10 @@ Route::any('/api/like','Like\LikeController@like');
 
 //收藏
 Route::any('/collect','Register\CollectController@collect');
+
+
+Route::any('/oradd','Order\OrderController@orAdd');
+
+
+Route::any('/ormsg','Order\OrderController@orMsg');
+
