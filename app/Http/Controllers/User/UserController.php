@@ -28,7 +28,7 @@ class UserController extends Controller
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
                 //token存redis
                 $key='str:web:token'.$user['u_id'];
-                $uid='str:web:u_id'.$user['u_id'];
+                $uid='str:web:u_id';
                 Redis::set($key,$token);
                 Redis::set($uid,$user['u_id']);
                 Redis::expire($key,86400);
@@ -53,30 +53,29 @@ class UserController extends Controller
 
         }else{
             $data=[
-                'error'=>'该用户不存在'
+                'msg'=>'该用户不存在'
             ];
             return json_encode($data);
         }
+
     }
 
     public function quit(Request $request){
         $uid=$request->input('u_id');
         $key='str:web:token'.$uid;
-        $is=Redis::del($key);
+        $is=Redis::delete($key);
         if($is==1){
             $response=[
                 'status'=>200,
                 'msg'  =>'退出成功'
             ];
-            return json_encode($response);
         }else{
             $response=[
                 'status'=>400,
                 'msg'  =>'非法操作'
             ];
-            return json_encode($response);
         }
-        //return json_encode($response);
+        return json_encode($response);
     }
 
 
