@@ -26,13 +26,6 @@ class UserController extends Controller
         if($u_pwd){
             if($user['u_pwd']==$pwd){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
-                setcookie('u_id',$u_pwd['u_id'],time()+86400,'/','',false,true);
-                setcookie('token',$token,time()+86400,'/','',false,true);
-
-                request()->session()->put('u_token',$token);
-                request()->session()->put('u_id',$user['u_id']);
-
-
                 //token存redis
                 $key='str:web:token'.$user['u_id'];
                 Redis::set($key,$token);
