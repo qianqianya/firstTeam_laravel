@@ -12,11 +12,24 @@ class UserController extends Controller
 {
     public function login(Request $request)
     {
-        $email=$request->input('u_email');
+        $name=$request->input('name');
         $pwd=$request->input('u_pwd');
+        if(substr_count($name,'@')){
+            $where=[
+                'u_email'=>$name
+            ];
+        }elseif(is_numeric($name)&&strlen($name)==11){
+            $where=[
+                'u_tel'=>$name
+            ];
+        }else{
+            $where=[
+                'u_name'=>$name
+            ];
+        }
 
         $where=[
-            'u_email'=>$email
+            'name'=>$name
         ];
 
         $u_pwd=UsersModel::where($where)->first();
