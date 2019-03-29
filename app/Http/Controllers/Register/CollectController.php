@@ -28,16 +28,18 @@ class CollectController extends Controller
             }else{
                 $response=[
                     'errno'=>400,
-                    'msg'  =>'该商品已收藏，请勿反复收藏'
+                    'msg'  =>'取消收藏成功'
                 ];
             }
             return json_encode($response);
+        }else{
+            $response=[
+                'errno'=>100,
+                'msg'  =>$responce
+            ];
+            return json_encode($response);
         }
-
-<<<<<<< HEAD
     }
-=======
-        }
->>>>>>> master
+
 
 }
