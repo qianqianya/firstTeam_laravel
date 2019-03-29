@@ -43,6 +43,6 @@ class CollectController extends Controller
         }
     }
 
-
+    
 }
 
