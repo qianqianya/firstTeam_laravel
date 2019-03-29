@@ -23,7 +23,8 @@ class CollectController extends Controller
                 Redis::zAdd($collect_u,$time,$goods_id);
                 $response=[
                     'errno'=>200,
-                    'msg'  =>'收藏成功'
+                    'msg'  =>'收藏成功',
+                    'status'=>2
                 ];
             }else{
                 Redis::zRem($collect_u,$goods_id);
