@@ -16,7 +16,13 @@ class LikeController extends Controller
 
         $like_num = $request->input('like_num');;
         $num = $like_num+1;
+        if($num==0){
+            $num=1;
+        }
         $nums = $like_num-1;
+        if(strstr($nums,'-')){
+            $nums=0;
+        }
         $res = DB::table('laravel_like')->where(['u_id'=>$u_id,'goods_id'=>$goods_id])->first();
         $goods_num = DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->first();
         if($res){
@@ -80,9 +86,10 @@ class LikeController extends Controller
         }else{
 
            $num = DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->first();
-           $num->like_status = 2;
+
 
            if($num){
+               $num->like_status = 2;
                return json_encode($num);
            }else{
 
