@@ -10,12 +10,14 @@ class RegisterController extends Controller
     //注册
     public function doReg(Request $request){
         $name=$request->input('name');
+        $tel=$request->input('tel');
         $email=$request->input('email');
         $pwd=$request->input('pwd');
         $rpwd=$request->input('rpwd');
         if($rpwd==$pwd){
             $data=[
                 'u_name'=>$name,
+                'u_tel'=>$tel,
                 'u_email'=>$email,
                 'u_pwd'=>$pwd
 
