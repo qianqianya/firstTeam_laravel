@@ -46,7 +46,20 @@ class GoodsController extends Controller
 
         if(!$res){
             DB::table('laravel_goods_hst')->insert(['u_id'=>$u_id,'goods_id'=>$goods_id]);
+            return json_encode(
+                [
+                    'status'=>1000,
+                    'msg'=>'mysql add ok'
+                ]
+            );
         }
+
+        return json_encode(
+            [
+                'status'=>1000,
+                'msg'=>'Data already exists'
+            ]
+        );
 
     }
 
@@ -56,11 +69,14 @@ class GoodsController extends Controller
         $obj = DB::table('laravel_goods_hst')->
         join('laravel_user','laravel_goods_hst.u_id','=','laravel_user.u_id')->
         join('laravel_goods','laravel_goods_hst.goods_id','=','laravel_goods.goods_id')->
-        where(['goods_id'=>$goods_id])->
+        where(['laravel_goods_hst.goods_id'=>$goods_id])->
         get();
 
-        $json = json_encode($obj);
 
-        return $json;
+            $json = json_encode($obj);
+
+            return $json;
+        
+
     }
 }
