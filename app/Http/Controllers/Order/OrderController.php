@@ -47,7 +47,8 @@ class OrderController extends Controller
 
     # 获取订单页面信息
     public function  orMsg(){
-        $u_id = $_COOKIE['u_id'];
+        $uidK='str:web:u_id';
+        $u_id = Redis::get($uidK);
 
         $u_dada = DB::table('laravel_user')->where(['u_id'=>$u_id])->first();
         return  json_encode($u_dada->u_name);
@@ -61,7 +62,8 @@ class OrderController extends Controller
 
     # 订单列表
     public  function orList(){
-        $u_id = $_COOKIE['u_id'];
+        $uidK='str:web:u_id';
+        $u_id = Redis::get($uidK);
         $u_dada = DB::table('laravel_user')->where(['u_id'=>$u_id])->get();
         if($u_dada){
             $data = $u_dada->toArray();
