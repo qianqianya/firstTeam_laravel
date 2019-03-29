@@ -74,3 +74,7 @@ Route::any('/oradd','Order\OrderController@orAdd');
 
 Route::any('/ormsg','Order\OrderController@orMsg');
 
+
+# 订单列表
+Route::any('/orlist','Order\OrderController@orList');
+
