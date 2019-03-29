@@ -25,10 +25,10 @@ class LikeController extends Controller
 
                 if($goods_num){
                     DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->update(['like_num'=>$num]);
-                    DB::table('laravel_like')->insert(['u_id'=>$u_id,'goods_id'=>$goods_id,'status'=>$status]);
+                    DB::table('laravel_like')->where(['u_id'=>$u_id,'goods_id'=>$goods_id])->update(['status'=>$status]);
                 }else{
                     DB::table('laravel_like_num')->insert(['goods_id'=>$goods_id,'like_num'=>1]);
-                    DB::table('laravel_like')->insert(['u_id'=>$u_id,'goods_id'=>$goods_id,'status'=>$status]);
+                    DB::table('laravel_like')->where(['u_id'=>$u_id,'goods_id'=>$goods_id])->update(['status'=>$status]);
                 }
 
             //点赞
