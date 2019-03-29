@@ -19,7 +19,7 @@ class CollectController extends Controller
         $responce=$this->checkLogin($token,$uid);
         if($responce=='true'){
             if($status==1){
-                Redis::zlncrBy($collect,1,$goods_id);
+                Redis::zIncrBy($collect,1,$goods_id);
                 Redis::zAdd($collect_u,$time,$goods_id);
                 $response=[
                     'errno'=>200,
@@ -43,21 +43,7 @@ class CollectController extends Controller
         }
     }
 
-    //防非法登录
-    public function checkLogin($token,$uid){
-        $key='str:web:token'.$uid;
-        $res_token=Redis::get($key);
-        if(empty($uid)){
-            return '您还没登录，请先登录';
-        }
-        if(empty($token)){
-            return '您还没登录，请先登录';
-        }
-        if($res_token!=$token){
-            return '非法登录';
-        }
-        return true;
-    }
+    
 
 
 }
