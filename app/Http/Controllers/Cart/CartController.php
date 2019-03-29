@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cart;
 use App\Model\CartModel;
 use App\Model\GoodsModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use App\Http\Controllers\Controller;
 
 class CartController extends Controller
@@ -21,8 +22,9 @@ class CartController extends Controller
             'goods_id'=>$goods_id
         ];
         $goods=GoodsModel::where($where)->first();
-
-        if(empty($_COOKIE['u_id'])){
+        $uid='str:web:u_id';
+        $u_id = Redis::get($uid);
+        if(empty($u_id)){
             $response=[
                 'errno'=>1000,
                 'msg'  =>'请先登录'
@@ -61,15 +63,14 @@ class CartController extends Controller
      * 购物车展示
      */
     public function cartList(){
-        if(empty($_COOKIE['u_id'])){
+        $uid='str:web:u_id';
+        $u_id = Redis::get($uid);
+        if(empty($u_id)){
             $response=[
                 'errno'=>'1000',
                 'msg'=>'请先登录'
             ];
         }else {
-            $u_id = $_COOKIE['u_id'];
-
-
             $cart_goods = CartModel::where(['uid' => $u_id])->get()->toArray();
 
             $response[] = '';
