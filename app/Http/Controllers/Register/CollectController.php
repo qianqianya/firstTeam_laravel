@@ -21,12 +21,10 @@ class CollectController extends Controller
             if($status==1){
                 Redis::zIncrBy($collect,1,$goods_id);
                 Redis::zAdd($collect_u,$time,$goods_id);
-                $response=[
-                    'errno'=>200,
-                    'msg'  =>'收藏成功',
-                    'status'=>$status
-                ];
-                return json_encode($response);
+                    $response=[
+                        'errno'=>200,
+                        'msg'  =>'收藏成功'
+                    ];
             }else{
                 Redis::zRem($collect_u,$goods_id);
                 Redis::zlncrBy($collect,-1,$goods_id);
@@ -34,8 +32,8 @@ class CollectController extends Controller
                     'errno'=>400,
                     'msg'  =>'取消收藏成功'
                 ];
-                return json_encode($response);
             }
+            return json_encode($response);
         }else{
             $response=[
                 'errno'=>100,

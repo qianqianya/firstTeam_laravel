@@ -7639,7 +7639,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Register/CollectController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="212">
-              <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+              <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
               </folding>
@@ -7795,12 +7795,12 @@
       <option name="presentableId" value="Default" />
       <updated>1553675666302</updated>
       <workItem from="1553820042568" duration="1706000" />
-      <workItem from="1553821760694" duration="12263000" />
+      <workItem from="1553821760694" duration="12693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13969000" />
+    <option name="totallyTimeSpent" value="14399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1374" height="735" extended-state="0" />
@@ -7898,7 +7898,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Register/CollectController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+          <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
           </folding>
