@@ -60,12 +60,12 @@ class UserController extends Controller
         $is=Redis::del($key);
         if($is==1){
             $response=[
-                'errno'=>200,
+                'status'=>200,
                 'msg'  =>'退出成功'
             ];
         }else{
             $response=[
-                'errno'=>400,
+                'status'=>400,
                 'msg'  =>'非法操作'
             ];
         }

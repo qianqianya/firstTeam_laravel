@@ -26,9 +26,11 @@ class CollectController extends Controller
                     'msg'  =>'收藏成功'
                 ];
             }else{
+                Redis::zRem($collect_u,$goods_id);
+                Redis::zlncrBy($collect,-1,$goods_id);
                 $response=[
                     'errno'=>400,
-                    'msg'  =>'该商品已收藏，请勿反复收藏'
+                    'msg'  =>'取消收藏成功'
                 ];
             }
             return json_encode($response);
@@ -37,9 +39,10 @@ class CollectController extends Controller
                 'errno'=>100,
                 'msg'  =>$responce
             ];
-            return json_encode($responce);
+            return json_encode($response);
         }
     }
+
 
 }
 
