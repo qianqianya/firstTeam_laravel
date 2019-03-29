@@ -7598,22 +7598,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="php" value="5" />
+          <entry key="php" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="5" />
+          <entry key="PHP" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="69" />
+          <entry key="php" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="69" />
+          <entry key="PHP" value="81" />
         </counts>
       </usages-collector>
     </session>
@@ -7633,6 +7633,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/User/UserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
@@ -7647,8 +7656,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Register/CollectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1403">
-              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="304">
+              <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
               <folding>
                 <element signature="e#49#77#0#PHP" expanded="true" />
               </folding>
@@ -7805,12 +7814,12 @@
       <option name="presentableId" value="Default" />
       <updated>1553675666302</updated>
       <workItem from="1553820042568" duration="1706000" />
-      <workItem from="1553821760694" duration="3998000" />
+      <workItem from="1553821760694" duration="6180000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5704000" />
+    <option name="totallyTimeSpent" value="7886000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1380" height="744" extended-state="0" />
@@ -7878,16 +7887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/User/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1127">
-          <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-          <folding>
-            <element signature="e#46#71#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -7905,10 +7904,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/User/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Register/CollectController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1403">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="304">
+          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
           <folding>
             <element signature="e#49#77#0#PHP" expanded="true" />
           </folding>
