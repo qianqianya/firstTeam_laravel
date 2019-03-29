@@ -32,7 +32,7 @@ class OrderController extends Controller
         $res = DB::table('laravel_order')->insert($orDate);
         if($res){
                 # 下单成功删除购物车
-                $cRes = DB::table('laravel_cort')->where(['uid'=>$u_id])->delete();
+                $cRes = DB::table('laravel_cart')->where(['uid'=>$u_id])->delete();
             if($cRes){
                 $reset = [
                     'code'=>200

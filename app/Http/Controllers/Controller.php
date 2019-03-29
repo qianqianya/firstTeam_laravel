@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Redis;
 class Controller extends BaseController
 {
     public function checkLogin($token,$uid){
-        $key='str:web:token'.$uid;
-        $res_token=Redis::get($key);
+        $u_id=Redis::lindex('key','str:web:u_id');
+        $res_token=Redis::lindex('key','str:web:token'.$u_id);
         if(empty($uid)){
             return '您还没登录，请先登录';
         }
@@ -23,5 +23,6 @@ class Controller extends BaseController
         }
         return true;
     }
+
 }
 
