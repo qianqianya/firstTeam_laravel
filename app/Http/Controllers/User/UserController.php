@@ -27,11 +27,6 @@ class UserController extends Controller
                 'u_name'=>$name
             ];
         }
-
-        $where=[
-            'name'=>$name
-        ];
-
         $u_pwd=UsersModel::where($where)->first();
         $user=json_decode($u_pwd,true);
         //var_dump($user);die;
