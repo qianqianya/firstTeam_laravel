@@ -69,6 +69,7 @@ class CartController extends Controller
         }else {
             $u_id = $_COOKIE['u_id'];
 
+
             $cart_goods = CartModel::where(['uid' => $u_id])->get()->toArray();
 
             $response[] = '';
