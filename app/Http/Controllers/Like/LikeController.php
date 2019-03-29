@@ -20,16 +20,18 @@ class LikeController extends Controller
         $res = DB::table('laravel_like')->where(['u_id'=>$u_id,'goods_id'=>$goods_id])->first();
         $goods_num = DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->first();
         if($res){
-            //点赞
+            //取消点赞
             if($res->status==1){
 
                 if($goods_num){
                     DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->update(['like_num'=>$num]);
+                    DB::table('laravel_like')->insert(['u_id'=>$u_id,'goods_id'=>$goods_id,'status'=>$status]);
                 }else{
                     DB::table('laravel_like_num')->insert(['goods_id'=>$goods_id,'like_num'=>1]);
+                    DB::table('laravel_like')->insert(['u_id'=>$u_id,'goods_id'=>$goods_id,'status'=>$status]);
                 }
-                DB::table('laravel_like')->insert(['u_id'=>$u_id,'goods_id'=>$goods_id,'status'=>$status]);
-            //取消点赞
+
+            //点赞
             }else{
                 DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->update(['like_num'=>$nums]);
                 DB::table('laravel_like')->where(['u_id'=>$u_id,'goods_id'=>$goods_id])->update(['status'=>1]);
