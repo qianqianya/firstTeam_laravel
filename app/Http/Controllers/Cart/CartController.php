@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cart;
 use App\Model\CartModel;
 use App\Model\GoodsModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use App\Http\Controllers\Controller;
 
 class CartController extends Controller
