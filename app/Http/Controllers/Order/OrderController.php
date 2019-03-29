@@ -14,11 +14,13 @@ class OrderController extends Controller
            # 添加订单
         $money  = $request->input('money');
         $num  = $request->input('num');
+        $uidK='str:web:u_id';
+        $u_id = Redis::get($uidK);
         $orDate = [
             'o_name'=>$this->orNumAdd()
             ,'o_amount'=>$money
             ,'o_integral'=>null
-            ,'uid'=>$_COOKIE['u_id']
+            ,'uid'=>$u_id
             ,'o_ctime'=>time()
             ,'is_delete'=>null
             ,'is_pay'=>null
@@ -29,10 +31,13 @@ class OrderController extends Controller
 
         $res = DB::table('laravel_order')->insert($orDate);
         if($res){
-            $reset = [
-                'code'=>200
-                ,'msg'=>'下单成功'
-            ];
+                # 下单成功删除购物车
+                $cRes = DB::table('laravel_cart')->where(['uid'=>$u_id])->delete();
+                $reset = [
+                    'code'=>200
+                    ,'msg'=>'下单成功'
+                ];
+
         }else{
             $reset = [
                 'code'=>500
@@ -49,7 +54,6 @@ class OrderController extends Controller
     public function  orMsg(){
         $uidK='str:web:u_id';
         $u_id = Redis::get($uidK);
-
         $u_dada = DB::table('laravel_user')->where(['u_id'=>$u_id])->first();
         return  json_encode($u_dada->u_name);
     }
@@ -64,16 +68,20 @@ class OrderController extends Controller
     public  function orList(){
         $uidK='str:web:u_id';
         $u_id = Redis::get($uidK);
-        $u_dada = DB::table('laravel_user')->where(['u_id'=>$u_id])->get();
+        $u_dada = DB::table('laravel_order')->where(['uid'=>$u_id])->get();
+
         if($u_dada){
             $data = $u_dada->toArray();
             foreach($data as $k=>$v){
-                if($v['status']==1){
-                    $v['status']='未支付';
+                if($v->status==1){
+                    $v->status='<a href="javascript:;" class="orangeBtn w_account" >去支付</a>';
+                }else if($v->status==2){
+                    $v->status='<a href="javascript:;" class="orangeBtn w_account" >等待发货</a>';
                 }
-                $v['o_ctime']=date('Y-m-d H:i:s',$v['o_ctime']);
+                $v->o_ctime=date('Y-m-d H:i:s',$v->o_ctime);
             }
         }
+        
         return json_encode($data);
     }
 }
