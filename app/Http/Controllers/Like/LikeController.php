@@ -80,7 +80,7 @@ class LikeController extends Controller
 
         if($res){
 
-           $obj = DB::table('laravel_like')->join('laravel_like_num','laravel_like.goods_id','=','laravel_like_num.goods_id')->where(['u_id'=>$u_id])->first();
+           $obj = DB::table('laravel_like')->join('laravel_like_num','laravel_like.goods_id','=','laravel_like_num.goods_id')->where(['u_id'=>$u_id,'laravel_like.goods_id'=>$goods_id])->first();
            $obj->like_status = 1;
            return json_encode($obj);
         }else{
