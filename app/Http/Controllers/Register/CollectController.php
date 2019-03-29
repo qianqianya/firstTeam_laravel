@@ -42,6 +42,7 @@ class CollectController extends Controller
             return json_encode($response);
         }
     }
+
     //防非法登录
     public function checkLogin($token,$uid){
         $key='str:web:token'.$uid;
@@ -57,6 +58,7 @@ class CollectController extends Controller
         }
         return true;
     }
+
 
 }
 
