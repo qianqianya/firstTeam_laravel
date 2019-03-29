@@ -86,9 +86,10 @@ class LikeController extends Controller
         }else{
 
            $num = DB::table('laravel_like_num')->where(['goods_id'=>$goods_id])->first();
-           $num->like_status = 2;
+
 
            if($num){
+               $num->like_status = 2;
                return json_encode($num);
            }else{
 
