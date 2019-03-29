@@ -45,6 +45,9 @@ Route::any('/api/goodsHstList', 'Goods\GoodsController@goodsHstList');
 //购物车添加
 Route::post('/cartAdd', 'Cart\CartController@cartAdd');
 
+//购物车删除
+Route::post('/cartDel', 'Cart\CartController@cartDel');
+
 //购物车展示
 Route::any('/cartList', 'Cart\CartController@cartList');
 

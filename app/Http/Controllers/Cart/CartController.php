@@ -96,7 +96,28 @@ class CartController extends Controller
         return json_encode($response);
     }
 
-    
+    /**
+     *购物车删除
+     */
+    public function cartDel(Request $request){
+        $c_id=$request->input('c_id');
+        $where=[
+            'c_id'=>$c_id
+        ];
+        $cart=CartModel::where($where)->delete();
+        if($cart){
+            $response=[
+                'status'=>'200',
+                'msg'=>'删除成功'
+            ];
+        }else{
+            $response=[
+                'status'=>'1000',
+                'msg'=>'删除失败'
+            ];
+        }
+        return json_encode($response);
+    }
 }
 
 
