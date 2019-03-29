@@ -74,8 +74,9 @@ class UserController extends Controller
                 'status'=>400,
                 'msg'  =>'非法操作'
             ];
+            return json_encode($response);
         }
-        return json_encode($response);
+        //return json_encode($response);
     }
 
 
