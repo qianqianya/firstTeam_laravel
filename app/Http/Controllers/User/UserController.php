@@ -21,7 +21,7 @@ class UserController extends Controller
 
         $u_pwd=UsersModel::where($where)->first();
         $user=json_decode($u_pwd,true);
-        //var_dump($user);die;
+        var_dump($user);die;
 
         if($u_pwd){
             if($user['u_pwd']==$pwd){
