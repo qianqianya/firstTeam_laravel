@@ -71,6 +71,9 @@ class CartController extends Controller
                 'msg'=>'请先登录'
             ];
         }else {
+
+            $uid='str:web:u_id';
+            $u_id = Redis::get($uid);
             $cart_goods = CartModel::where(['uid' => $u_id])->get()->toArray();
 
             $response[] = '';
@@ -92,6 +95,8 @@ class CartController extends Controller
         //print_r($response);
         return json_encode($response);
     }
+
+    
 }
 
 
