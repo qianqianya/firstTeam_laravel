@@ -33,14 +33,16 @@ Route::any('/reg','Register\RegisterController@doReg');
 //商品
 Route::any('/api/goodsList', 'Goods\GoodsController@goodsList');
 
+//商品详情
 Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
 
-
+//购物车添加
 Route::post('/cartAdd', 'Cart\CartController@cartAdd');
 
 //购物车展示
 Route::any('/cartList', 'Cart\CartController@cartList');
 
+//商品详情
 Route::any('/api/goodsDetails', 'Goods\GoodsController@goodsDetails');
 
 
@@ -78,3 +80,7 @@ Route::any('/ormsg','Order\OrderController@orMsg');
 # 订单列表
 Route::any('/orlist','Order\OrderController@orList');
 
+
+
+# 浏览次数
+Route::post('/browse','Goods\GoodsController@browse');
