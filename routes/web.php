@@ -19,6 +19,9 @@ Route::get('/', function () {
 //登陆
 Route::any('/api/login', 'User\UserController@login');
 
+//修改密码
+Route::any('/updatePwd', 'User\UserController@updatePwd');
+
 //个人中心token
 Route::any('/api/token', 'User\UserController@token');
 

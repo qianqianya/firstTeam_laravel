@@ -88,7 +88,54 @@ class UserController extends Controller
         return json_encode($response);
     }
 
+    //修改密码
+    public function updatePwd(Request $request){
+        $name = $request->input('name');
+        $pwd1 = $request->input('pwd1');
+        $pwd2 = $request->input('pwd2');
+        $pwd3 = $request->input('pwd3');
 
+        $key='str:web:u_id';
+        $u_id=Redis::get($key);
+        if(empty($u_id)){
+            $response=[
+                'status'=>'1000',
+                'msg'=>'请先登录'
+            ];
+        }else if(!filter_var($name, FILTER_VALIDATE_EMAIL)) {
+            $where=[
+                'u_tel'=>$name,
+                'u_pwd'=>$pwd1
+            ];
+        } else {
+            $where=[
+                'u_email'=>$name,
+                'u_pwd'=>$pwd1
+            ];
+        }
+
+        $user=UsersModel::where($where)->first();
+        if($user){
+            $where=[
+                'u_id'=>$user['u_id'],
+                'u_pwd'=>$pwd3
+            ];
+            $user_update=UsersModel::where($where)->update();
+            if($user_update){
+                $response=[
+                    'status'=>'200',
+                    'msg'=>'修改成功'
+                ];
+            }
+        }else{
+            $response=[
+                'status'=>'1000',
+                'msg'=>'账号密码不对'
+            ];
+        }
+
+        return $response;
+    }
 
     //个人中心
     public function mycenter(Request $request){
